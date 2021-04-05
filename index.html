@@ -5,75 +5,72 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./css/main.css" />
-        <title>Document</title>
+        <title>Formulario</title>
     </head>
     <body>
-        <div class="login-box">
-            <h2>Formulario de registro</h2>
+            <h1>Formulario de registro</h1>
+            <div id="error"></div>
             <form id="formulario">
                 <div class="user-box">
-                    <input name="firstname" id="input" type="text" required />
-                    <label>Nombre</label>
+                    <input name="firstname" id="firstname" type="text" placeholder="Nombre"/>
                 </div>
                 <div class="user-box">
-                    <input name="lastname" id="input" type="text" required />
-                    <label>Apellido</label>
+                    <input name="lastname" id="lastname" type="text" placeholder="Apellido"/>
+                </div>
+                <span id="rutError"></span>
+                <div class="user-box">
+                    <input name="rut" id="rut" type="text" placeholder="RUT (sin puntos)" required />                    
                 </div>
                 <div class="user-box">
-                    <input name="lastname" id="input" type="text" required />
-                    <label for="">RUT (sin puntos)</label>
-                </div>
-                <div class="user-box">
-                    <input name="rut" id="input" type="text" required />
-                    <label for="">Email</label>
+                    <input name="email" id="email" type="email" placeholder="Email" required />
                 </div>
                 <div class="user-box">
                     <input
                         name="phone"
                         id="input"
-                        type="text"
-                        pattern="[0-9]{8}"
-                        maxlength="8"
+                        type="number"
+                        pattern="[0-9]{9}"
+                        maxlength="9"
+                        placeholder="Teléfono"
                         required
                     />
-                    <label for="">Telefono</label>
                 </div>
                 <label for="">¿Cuáles son sus lenguajes de interés?</label>
                 <div class="checkbox">
                     <label for="Python">Python</label>
-                    <input type="checkbox" id="Python" value="Python" name="languages" />
+                    <input class="option-box" type="checkbox" id="Python" value="Python" name="languages" />
                     <label for="Java">Java</label>
-                    <input type="checkbox" id="Java" value="Java" name="languages" />
+                    <input class="option-box" type="checkbox" id="Java" value="Java" name="languages" />
                     <label for="TypeScript">TypeScript</label>
-                    <input type="checkbox" id="TypeScript" value="TypeScript" name="languages" />
+                    <input class="option-box" type="checkbox" id="TypeScript" value="TypeScript" name="languages" />
                     <label for="PHP">PHP</label>
-                    <input type="checkbox" id="PHP" value="PHP" name="languages" />
+                    <input class="option-box" type="checkbox" id="PHP" value="PHP" name="languages" />
                     <label for="C#">C#</label>
-                    <input type="checkbox" id="C#" value="C#" name="languages" />
+                    <input class="option-box" type="checkbox" id="C#" value="C#" name="languages" />
                     <label for="Cpp">C++</label>
-                    <input type="checkbox" id="Cpp" value="Cpp" name="languages" />
+                    <input class="option-box" type="checkbox" id="Cpp" value="Cpp" name="languages" />
                 </div>
                 <label for="">¿Cuál es su nivel de conocimiento en programación?</label>
                 <div class="range-slider">
                     <input id="range" type="range" min="0" max="100" step="5" />
                     <span class="range-value">0</span>
                 </div>
-                <label for="">¿Cuántos años de experiencia laboral tiene?</label>
+                <label for="" style="margin: 1.5rem 0px">¿Cuántos años de experiencia laboral tiene?</label>
                 <div class="experience" aria-required="true">
                     <label for="years">1</label>
-                    <input type="radio" name="years" value="1" />
+                    <input class="exp-opt" type="radio" name="years" value="1"/>
                     <label for="years">2</label>
-                    <input type="radio" name="years" value="2" />
+                    <input class="exp-opt" type="radio" name="years" value="2" />
                     <label for="years">3</label>
-                    <input type="radio" name="years" value="3" />
+                    <input class="exp-opt" type="radio" name="years" value="3" />
                     <label for="years">4</label>
-                    <input type="radio" name="years" value="4" />
+                    <input class="exp-opt" type="radio" name="years" value="4" />
                     <label for="years">5</label>
-                    <input type="radio" name="years" value="5" />
+                    <input class="exp-opt" type="radio" name="years" value="5" />
                 </div>
                 <label for="">Escriba una breve descripcion de usted:</label>
                 <div class="general-description">
-                    <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                    <textarea name="description" id="description" cols="30" rows="10" style="width: 100%;"></textarea>
                 </div>
 
                 <button type="submit" id="send">
@@ -92,7 +89,6 @@
                     Limpiar
                 </button>
             </form>
-        </div>
         <script src="./js/index.js"></script>
     </body>
 </html>
