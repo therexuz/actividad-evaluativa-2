@@ -10,32 +10,34 @@
     <body>
             <h1>Formulario de registro</h1>
             <div id="error"></div>
-            <form id="formulario">
+            <form id="formulario" method="POST">
+                <span class="error" id="nameError"></span>
                 <div class="user-box">
                     <input name="firstname" id="firstname" type="text" placeholder="Nombre"/>
                 </div>
+                <span class="error" id="lastnameError"></span>
                 <div class="user-box">
                     <input name="lastname" id="lastname" type="text" placeholder="Apellido"/>
                 </div>
-                <span id="rutError"></span>
+                <span class="error" id="rutError"></span>
                 <div class="user-box">
-                    <input name="rut" id="rut" type="text" placeholder="RUT (sin puntos)" required />                    
+                    <input name="rut" id="rut" type="text" placeholder="RUT (sin puntos)"/>                    
                 </div>
+                <span class="error" id="emailError"></span>
                 <div class="user-box">
-                    <input name="email" id="email" type="email" placeholder="Email" required />
+                    <input name="email" id="email" type="text" placeholder="Email"/>
                 </div>
+                <span class="error" id="phoneError"></span>
                 <div class="user-box">
                     <input
                         name="phone"
-                        id="input"
+                        id="phone"
                         type="number"
-                        pattern="[0-9]{9}"
-                        maxlength="9"
                         placeholder="Teléfono"
-                        required
                     />
                 </div>
                 <label for="">¿Cuáles son sus lenguajes de interés?</label>
+                <span class="error" id="checkboxError"></span>
                 <div class="checkbox">
                     <label for="Python">Python</label>
                     <input class="option-box" type="checkbox" id="Python" value="Python" name="languages" />
@@ -56,6 +58,7 @@
                     <span class="range-value">0</span>
                 </div>
                 <label for="" style="margin: 1.5rem 0px">¿Cuántos años de experiencia laboral tiene?</label>
+                <span class="error" id="expError"></span>
                 <div class="experience" aria-required="true">
                     <label for="years">1</label>
                     <input class="exp-opt" type="radio" name="years" value="1"/>
@@ -68,9 +71,10 @@
                     <label for="years">5</label>
                     <input class="exp-opt" type="radio" name="years" value="5" />
                 </div>
+                <span class="error" id="descError"></span>
                 <label for="">Escriba una breve descripcion de usted:</label>
                 <div class="general-description">
-                    <textarea name="description" id="description" cols="30" rows="10" style="width: 100%;"></textarea>
+                    <textarea name="description" id="description" cols="30" rows="10" style="width: 100%;" maxlength="300"></textarea>
                 </div>
 
                 <button type="submit" id="send">
@@ -81,7 +85,7 @@
                     Enviar
                 </button>
 
-                <button id="clear" type="submit">
+                <button id="clear" type="button">
                     <span></span>
                     <span></span>
                     <span></span>
