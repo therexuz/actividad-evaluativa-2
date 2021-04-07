@@ -10,7 +10,9 @@ form.addEventListener("submit", function (event) {
         var img = encodeURIComponent("./img/ok.png");
         succesMsg.innerHTML =
             "<h1>hemos recibido sus datos, pronto nos estaremos comunicando con usted</h1>" +
-                "<img src=" + img + ">";
+                "<img src=" +
+                img +
+                ">";
     }
     else {
         var errorMsg = document.getElementById("error");
@@ -64,15 +66,15 @@ function validarFormulario(form) {
     var experience = form.elements.namedItem("years");
     var description = form.elements.namedItem("description").value;
     var validateForm = true;
-    if (validateName(firstname)
-        && validateLastname(lastname)
-        && validarRut(rut)
-        && validateEmail(email)
-        && validatePhone(phone)
-        && validateProgrammingLevel(programmingLevel)
-        && validateLanguages(languagesList)
-        && validateExperience(experience)
-        && validateDescription(description)) {
+    if (validateName(firstname) &&
+        validateLastname(lastname) &&
+        validarRut(rut) &&
+        validateEmail(email) &&
+        validatePhone(phone) &&
+        validateProgrammingLevel(programmingLevel) &&
+        validateLanguages(languagesList) &&
+        validateExperience(experience) &&
+        validateDescription(description)) {
         return true;
     }
     else {
@@ -105,7 +107,6 @@ function validarRut(rut) {
     else {
         isvalid = digitoVerificador(rut);
     }
-    //console.log("rut valido");
     return isvalid;
 }
 function validateEmail(email) {

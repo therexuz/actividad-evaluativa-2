@@ -9,7 +9,9 @@ form.addEventListener("submit", function (event: Event) {
         const img = encodeURIComponent("./img/ok.png");
         succesMsg.innerHTML =
             "<h1>hemos recibido sus datos, pronto nos estaremos comunicando con usted</h1>" +
-            "<img src=" +img +">";
+            "<img src=" +
+            img +
+            ">";
     } else {
         const errorMsg = <HTMLElement>document.getElementById("error");
         errorMsg.innerHTML = "<h3>ERROR: COMPLETE TODOS LOS CAMPOS</h3>";
@@ -40,15 +42,15 @@ function limpiarDatos() {
     const descErr = <HTMLElement>document.getElementById("descError");
     const errorMsg = <HTMLElement>document.getElementById("error");
 
-    errorMsg.innerText=""
-    nameErr.innerText="";
-    lastnameErr.innerText="";
-    rutErr.innerText="";
-    emailErr.innerText="";
-    phoneErr.innerText="";
-    languagesErr.innerText="";
-    expErr.innerText="";
-    descErr.innerText="";
+    errorMsg.innerText = "";
+    nameErr.innerText = "";
+    lastnameErr.innerText = "";
+    rutErr.innerText = "";
+    emailErr.innerText = "";
+    phoneErr.innerText = "";
+    languagesErr.innerText = "";
+    expErr.innerText = "";
+    descErr.innerText = "";
     form.reset();
 }
 
@@ -62,91 +64,87 @@ function validarFormulario(form: HTMLFormElement): boolean {
     const email = (<HTMLInputElement>form.elements.namedItem("email")).value;
     const phone = (<HTMLInputElement>form.elements.namedItem("phone")).value;
     const languagesList = <RadioNodeList>form.elements.namedItem("languages");
-    const programmingLevel = (<HTMLInputElement>form.elements.namedItem("range")).value
+    const programmingLevel = (<HTMLInputElement>form.elements.namedItem("range")).value;
     const experience = <RadioNodeList>form.elements.namedItem("years");
-    const description = (<HTMLInputElement>form.elements.namedItem("description")).value
-    
-    let validateForm:boolean=true;
+    const description = (<HTMLInputElement>form.elements.namedItem("description")).value;
 
-    if(    validateName(firstname) 
-        && validateLastname(lastname) 
-        && validarRut(rut) 
-        && validateEmail(email) 
-        && validatePhone(phone) 
-        && validateProgrammingLevel(programmingLevel)
-        && validateLanguages(languagesList) 
-        && validateExperience(experience)
-        && validateDescription(description))
-    {
-        return true
-    }else{
-        return false
+    let validateForm: boolean = true;
+
+    if (
+        validateName(firstname) &&
+        validateLastname(lastname) &&
+        validarRut(rut) &&
+        validateEmail(email) &&
+        validatePhone(phone) &&
+        validateProgrammingLevel(programmingLevel) &&
+        validateLanguages(languagesList) &&
+        validateExperience(experience) &&
+        validateDescription(description)
+    ) {
+        return true;
+    } else {
+        return false;
     }
-    
 }
 
-function validateName(firstname:string):boolean{
+function validateName(firstname: string): boolean {
+    if (firstname == "") {
+        const nameError = <HTMLElement>document.getElementById("nameError");
+        nameError.innerText = "Ingrese su nombre";
 
-    if (firstname == ""){
-        const nameError=<HTMLElement>document.getElementById("nameError")
-        nameError.innerText="Ingrese su nombre"
-        
         return false;
     }
 
     return true;
 }
 
-function validateLastname(lastname:string):boolean{
-    
-    if (lastname == ""){
-        const lastnameError=<HTMLElement>document.getElementById("lastnameError")
-        lastnameError.innerText="Ingrese su apellido"
-        return false
+function validateLastname(lastname: string): boolean {
+    if (lastname == "") {
+        const lastnameError = <HTMLElement>document.getElementById("lastnameError");
+        lastnameError.innerText = "Ingrese su apellido";
+        return false;
     }
-    return true
+    return true;
 }
 
-function validarRut(rut: string):boolean{
-    let isvalid:boolean;
+function validarRut(rut: string): boolean {
+    let isvalid: boolean;
     const rutErr = <HTMLElement>document.getElementById("rutError");
-    if (rut == "" || rut == "/./"){
-        rutErr.innerText="Ingrese su rut"
-        isvalid=false;
-    }else{
-        isvalid=digitoVerificador(rut)
+    if (rut == "" || rut == "/./") {
+        rutErr.innerText = "Ingrese su rut";
+        isvalid = false;
+    } else {
+        isvalid = digitoVerificador(rut);
     }
-    //console.log("rut valido");
-    return isvalid
+    return isvalid;
 }
 
-function validateEmail(email:string):boolean{
+function validateEmail(email: string): boolean {
     const re: RegExp = /\S+@\S+\.\S+/;
 
-    if (email == ""){
-        const emailError=<HTMLElement>document.getElementById("emailError")
-        emailError.innerText="Ingrese su email"
+    if (email == "") {
+        const emailError = <HTMLElement>document.getElementById("emailError");
+        emailError.innerText = "Ingrese su email";
         return false;
     }
-    if (!re.test(email)){
-        const emailError=<HTMLElement>document.getElementById("emailError")
-        emailError.innerText="Formato de email inválido"
-        return false;
-    }
-
-    return true;
-}
-
-function validatePhone(phone:string):boolean{
-    if (phone == "" || phone.length != 9 || phone.match(/\+/g) || phone.match(/\-/g)){
-        const phoneError=<HTMLElement>document.getElementById("phoneError")
-        phoneError.innerText="Ingrese un telefono válido"
+    if (!re.test(email)) {
+        const emailError = <HTMLElement>document.getElementById("emailError");
+        emailError.innerText = "Formato de email inválido";
         return false;
     }
     return true;
 }
 
-function validateLanguages(languages:RadioNodeList):boolean{
+function validatePhone(phone: string): boolean {
+    if (phone == "" || phone.length != 9 || phone.match(/\+/g) || phone.match(/\-/g)) {
+        const phoneError = <HTMLElement>document.getElementById("phoneError");
+        phoneError.innerText = "Ingrese un telefono válido";
+        return false;
+    }
+    return true;
+}
+
+function validateLanguages(languages: RadioNodeList): boolean {
     const selectedLanguages: Array<String> = [];
 
     languages.forEach((languageElement) => {
@@ -157,22 +155,22 @@ function validateLanguages(languages:RadioNodeList):boolean{
         }
     });
 
-    if (selectedLanguages.length < 1){
-        const checkboxError=<HTMLElement>document.getElementById("checkboxError")
-        checkboxError.innerText="Seleccione a lo menos 1 lenguaje"
+    if (selectedLanguages.length < 1) {
+        const checkboxError = <HTMLElement>document.getElementById("checkboxError");
+        checkboxError.innerText = "Seleccione a lo menos 1 lenguaje";
         return false;
     }
     return true;
 }
 
-function validateProgrammingLevel(programmingLevel:string):boolean{
-    if(programmingLevel==""){
+function validateProgrammingLevel(programmingLevel: string): boolean {
+    if (programmingLevel == "") {
         return false;
     }
     return true;
 }
 
-function validateExperience(experience:RadioNodeList){
+function validateExperience(experience: RadioNodeList) {
     let contador = 0;
     experience.forEach(function (expElements) {
         const input = <HTMLInputElement>expElements;
@@ -180,31 +178,31 @@ function validateExperience(experience:RadioNodeList){
             contador = contador + 1;
         }
     });
-    
-    if (contador < 1){
-        const expError=<HTMLElement>document.getElementById("expError")
-        expError.innerText="Elija una opcion"
+
+    if (contador < 1) {
+        const expError = <HTMLElement>document.getElementById("expError");
+        expError.innerText = "Elija una opcion";
         return false;
     }
     return true;
 }
 
-function validateDescription(description:string){
-    if(description.length>300){
-        const descError=<HTMLElement>document.getElementById("descError")
-        descError.innerText="Cantidad de caracteres no permitida"
+function validateDescription(description: string) {
+    if (description.length > 300) {
+        const descError = <HTMLElement>document.getElementById("descError");
+        descError.innerText = "Cantidad de caracteres no permitida";
         return false;
     }
-    if(description==""){
-        const descError=<HTMLElement>document.getElementById("descError")
-        descError.innerText="Por favor rellene la descripción"
+    if (description == "") {
+        const descError = <HTMLElement>document.getElementById("descError");
+        descError.innerText = "Por favor rellene la descripción";
         return false;
     }
     return true;
 }
 
-function digitoVerificador(rut:string):boolean{
-    let isvalid:boolean;
+function digitoVerificador(rut: string): boolean {
+    let isvalid: boolean;
     const serie: number[] = [2, 3, 4, 5, 6, 7, 2, 3];
     const [numRut, numVerificador] = rut.split("-");
     const numeros: string[] = numRut.split("");
@@ -222,24 +220,24 @@ function digitoVerificador(rut:string):boolean{
     const rutErr = <HTMLElement>document.getElementById("rutError");
 
     if (Verificador == Number(numVerificador)) {
-        isvalid=true;
+        isvalid = true;
     } else if (Verificador == 11) {
         if (numVerificador != zero) {
-            rutErr.innerText= "Rut Inválido";
-            isvalid=false;
-        }else{
-            isvalid=true;
+            rutErr.innerText = "Rut Inválido";
+            isvalid = false;
+        } else {
+            isvalid = true;
         }
     } else if (Verificador == 10) {
         if (numVerificador != k) {
             rutErr.innerText = "Rut Inválido";
-            isvalid=false;
-        }else{
-            isvalid=true;
+            isvalid = false;
+        } else {
+            isvalid = true;
         }
     } else {
         rutErr.innerText = "Rut Inválido";
-        isvalid=false;
+        isvalid = false;
     }
     return isvalid;
 }
@@ -260,7 +258,7 @@ phoneInput.addEventListener("input", function (event: Event) {
 /**
  * Funciones que actualizan el dato a la derecha del Range-slider
  */
-const rangeSlider=<HTMLInputElement>document.getElementById("range");
+const rangeSlider = <HTMLInputElement>document.getElementById("range");
 actualizarInput(rangeSlider);
 
 rangeSlider.addEventListener("input", function (event: any) {
