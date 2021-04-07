@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ES-es">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,6 +10,7 @@
     <body>
             <h1>Formulario de registro</h1>
             <div id="error"></div>
+            <!-- Seccion información general-->
             <form id="formulario" method="POST">
                 <span class="error" id="nameError"></span>
                 <div class="user-box">
@@ -36,8 +37,9 @@
                         placeholder="Teléfono"
                     />
                 </div>
+                <!-- Seccion Lenguajes de interés-->
                 <label for="">¿Cuáles son sus lenguajes de interés?</label>
-                <span class="error" id="checkboxError"></span>
+                <span class="error" id="languagesError"></span>
                 <div class="checkbox">
                     <label for="Python">Python</label>
                     <input class="option-box" type="checkbox" id="Python" value="Python" name="languages" />
@@ -52,11 +54,13 @@
                     <label for="Cpp">C++</label>
                     <input class="option-box" type="checkbox" id="Cpp" value="Cpp" name="languages" />
                 </div>
+                <!-- Seccion conocimiento en programacion-->
                 <label for="">¿Cuál es su nivel de conocimiento en programación?</label>
                 <div class="range-slider">
                     <input id="range" type="range" min="0" max="100" step="5" />
                     <span class="range-value">0</span>
                 </div>
+                <!-- Seccion experiencia-->
                 <label for="" style="margin: 1.5rem 0px">¿Cuántos años de experiencia laboral tiene?</label>
                 <span class="error" id="expError"></span>
                 <div class="experience" aria-required="true">
@@ -71,12 +75,13 @@
                     <label for="years">5</label>
                     <input class="exp-opt" type="radio" name="years" value="5" />
                 </div>
+                <!-- Seccion descripcion-->
                 <span class="error" id="descError"></span>
                 <label for="">Escriba una breve descripcion de usted:</label>
                 <div class="general-description">
                     <textarea name="description" id="description" cols="30" rows="10" style="width: 100%;" maxlength="300"></textarea>
                 </div>
-
+                <!-- Boton para enviar el formulario-->
                 <button type="submit" id="send">
                     <span></span>
                     <span></span>
@@ -84,7 +89,7 @@
                     <span></span>
                     Enviar
                 </button>
-
+                <!-- Boton para limpiar el formulario-->
                 <button id="clear" type="button">
                     <span></span>
                     <span></span>
